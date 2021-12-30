@@ -1,0 +1,6 @@
+Propiedades css:
+ - font-size: cambia el tamaño de la letra
+ - color: cambia el color de la letra
+ - background-color: cambia el color de fondo de un contenedor
+ - height: cambia la altura de un elemento
+ - width: cambia el ancho de un elemento
