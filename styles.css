@@ -1,10 +1,281 @@
-.primer-contenedor {
-    height: 250px;
-    width: 300px;
-    background-color: red;
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisclaro: #DFE9F3;
 }
-.segundo-contenedor {
-    height: 250px;
-    width: 300px;
-    background-color: red;
+
+/* Globales */
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /*Hack para Box Model */
+    scroll-snap-type: y mandatory;
+}
+
+/* Scroll Snap */
+.servicios,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16 px; /* 1rem=10px */
+    font-family: 'Krub', sans-serif;
+    /*background-color: cornflowerblue; esto cambia TODO el color de fonde del proyecto */
+    background-image: linear-gradient(to top, var(--grisclaro) 0%, var(--blanco ) 100%); 
+    /* es para colocar DEGRADÉ, background-image */
+}
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 4rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase; /* sirve para mayúsculas, sirven todas las letras en mayuscula */
+    font-weight: bold; /* texto en negrita */
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 480px) {
+    .boton {
+        width: auto;
+    }
+}
+.boton:hover {
+    cursor: pointer; /*esto hace generar la manito, ya que a los botones/input que le damos estilos desaparece eso y hay que volver a colocar */
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+/* Tipografia */
+h1{
+    font-size: 3.8 rem;
+}
+h2{
+    font-size: 2.8 rem;
+}
+h3{
+    font-size: 1.8 rem;
+}
+h1,h2,h3{
+    text-align: center;
+}
+
+
+/* Titulos */
+.titulo span {
+    font-size: 2rem;
+}
+
+/* Utilidades W-100, FLEX, ALINEAR DERECHA, NAV-BG */
+.w-sm-100 { 
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha {  
+    justify-content: flex-end;
+}
+/* Navegacion principal */
+.nav-bg { 
+    background-color: var(--secundario);
+}
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+/* con .navegacion-principal a:hover los que genero es q cuando el usuario se coloca por ej en el enlace de INICIO este cambie de color,x ej a amarillo */
+/* los hover son una psuedoclase, no se le deja espacios p/q no lo tome como otro elemnto */
+
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/* con .navegacion-principal a:visited, el color que coloco es el que se ejecuta cuando visito el enlace */
+/* .navegacion-principal a:focus se dispara si navego con el teclado y se define el elemento */
+
+@media (min-width: 480px) {
+
+}
+@media (min-width: 768px) {
+    
+}
+
+/* Hero */
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {   
+    position: absolute;
+    background-color: rgb( 0,0,0, .7); /* anterior */
+    background-color: rgb(0 0 0 / 70%);
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p{
+    color: var(--blanco);
+}
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+
+/* Servicios */
+.servicios {
+    display: grid;
+    /*grid-template-columns: 300px 300px; columna */
+    /* grid-template-rows: 200px 800px; altura */
+    /* version corta, 1ero altura row, tamaño columnnas */
+    /* grid: 200px 800px / 300px   300px; */
+    /* grid-template-columns: 33.3%    33.3%   33.3%; esto se coloca porque es el 100% entre 3, se puede colocar en vez de 33.% -- 1 fr */
+    grid-template-columns: repeat(3, 1fr); /* esto es lo mismo que 1fr */ 
+    column-gap: 1rem;
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+.servicio p {
+    line-height: 2; /* permite cambiar interlineado */
+    text-align: center;
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex; /* ubica a los iconos uno frente al otro */
+    justify-content: space-evenly; 
+    align-items: center; /* alinea verticalmente */
+
+}
+
+/* Contacto */
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100% ); /* toma dos valores y usa el mas pequeño, Toma o asigna el ancho al formulario entre el numero mas chico de 60 rem y 100 */
+    margin: 0 auto; /* solo se usa por ej p/formulario y padre no tiene es display flex. Sirve p/centrar */
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase; /* mayúsuclas */
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+    .campo:nth-child(3),
+    .campo:nth-child(4) {/* evito crear clase extra, permite seleccionar el campo que voy a usar, siempre q se llamen iguales */
+        grid-column: 1 / 3;
+    }
+}
+.campo {
+    margin-bottom: 1rem;
+
+}
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+.campo textarea {
+    height: 20rem;
+}
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+/* acá genero un modificador
+.enviar .boton {
+    width: 100%;
+} */
+/* Footer */
+.footer {
+    text-align: center;
 }
